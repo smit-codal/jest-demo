@@ -40,8 +40,8 @@ export function LoginPage() {
   const handleSubmit = async() => {
     setFromSubmitted(true)
     // check if form is valid
-    const { email, password } = formError;
-    if (email === "" && password === "") {
+    const { email, password } = formDetails;
+    if (email !== "" && password !== "") {
       try {
         const res = await loginUser(formDetails);
         if(res && res.token) {
@@ -49,6 +49,7 @@ export function LoginPage() {
           navigate(paths.root)
         }
       } catch(error: any) {
+        console.log(error)
         alert(error.message)
       }
     }
