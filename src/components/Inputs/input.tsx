@@ -1,10 +1,11 @@
 type InputProps = {
   value: string;
-  label: string;
+  label?: string;
   type: string;
   name: string;
-  id: string;
-  required: boolean;
+  id?: string;
+  required?: boolean;
+  placeholder?: string;
   handleChange: Function
 };
 
@@ -15,6 +16,7 @@ export default function InputBox({
   name,
   id,
   required,
+  placeholder,
   handleChange
 }: InputProps) {
   return (
@@ -26,6 +28,7 @@ export default function InputBox({
         name={name}
         value={value}
         required={required}
+        placeholder={placeholder}
         onChange={(e) => handleChange(e.target.value, name)}
       />
     </>

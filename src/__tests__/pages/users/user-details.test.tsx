@@ -18,7 +18,7 @@ jest.mock("../../../apiUtils", () => {
     avatar: "https://reqres.in/img/faces/3-image.jpg",
   };
   return {
-    fetchUserDetail: () => Promise.resolve(user),
+    fetchUserDetail: () => Promise.resolve({ data: user }),
   };
 });
 
@@ -26,13 +26,18 @@ describe("User Details:", () => {
   it("renders correctly", async () => {
     jest.spyOn(JestRouter, "useParams").mockReturnValue({ id: "1" });
     const setUserDetail = jest.fn();
-    await act(async () => {
-      render(
-        <Router>
-          <UserDetails />
-        </Router>
-      );
-    });
+    // await act(async () => {
+    //   render(
+    //     <Router>
+    //       <UserDetails />
+    //     </Router>
+    //   );
+    // });
+    render(
+      <Router>
+        <UserDetails />
+      </Router>
+    );
     setUserDetail.mockImplementation(() => {
       expect(setUserDetail).toHaveBeenCalled();
     });

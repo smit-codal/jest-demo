@@ -12,7 +12,7 @@ jest.mock("../../../apiUtils", () => {
     },
   ];
   return {
-    getUsers: () => Promise.resolve(users),
+    getUsers: () => Promise.resolve({ data: users }),
   };
 });
 

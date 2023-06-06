@@ -18,9 +18,9 @@ export default function UserDetails() {
 
   useEffect(() => {
     async function fetchUser(id: string) {
-      const user = await fetchUserDetail(id);
-      console.log(user)
-      setUserDetail(user);
+      const { data } = await fetchUserDetail(id);
+      console.log(data);
+      setUserDetail(data);
     }
     if (id) fetchUser(id);
   }, [id]);
@@ -79,7 +79,9 @@ export default function UserDetails() {
   return (
     <>
       <h1>User Details</h1>
-      {userDetail && isObjectNotEmpty(userDetail) && UserDetailsContainer(userDetail)}
+      {userDetail &&
+        isObjectNotEmpty(userDetail) &&
+        UserDetailsContainer(userDetail)}
     </>
   );
 }

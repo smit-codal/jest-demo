@@ -10,18 +10,18 @@ export default function UsersList() {
   const [users, setUsers] = useState<Users[]>([]);
   useEffect(() => {
     async function getUsersData() {
-      const users = await getUsers();
-      console.log(users)
-      if(users[0].email) {
-        console.log("email exists")
+      const { data } = await getUsers();
+      console.log(users);
+      if (data[0].email) {
+        console.log("email exists");
       }
-      setUsers(users);
+      setUsers(data);
     }
     getUsersData();
   }, []);
 
   const handleUserDetail = (id: string) => {
-    navigate(paths.userDetails + id)
+    navigate(paths.userDetails + id);
   };
 
   return (
