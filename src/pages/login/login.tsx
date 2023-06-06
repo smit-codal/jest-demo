@@ -12,6 +12,7 @@ type LoginForm = {
 
 export function LoginPage() {
   const navigate = useNavigate()
+  const [isLoading, setIsLoading] = useState(false)
   const [formDetails, setFormDetails] = useState<LoginForm>({
     email: "",
     password: "",
@@ -43,13 +44,16 @@ export function LoginPage() {
     const { email, password } = formDetails;
     if (email !== "" && password !== "") {
       try {
+        setIsLoading(true)
         const res = await loginUser(formDetails);
+        setIsLoading(false)
         if(res && res.token) {
           localStorage.setItem('token', res.token)
           navigate(paths.root)
         }
       } catch(error: any) {
         console.log(error)
+        setIsLoading(false)
         alert(error.message)
       }
     }
@@ -77,6 +81,9 @@ export function LoginPage() {
     <>
       <div className="login-container">
         <h1>Login</h1>
+        {
+          isLoading && <div className="loader">Submitting...</div>
+        }
         <form>
           <InputBox
             type="text"

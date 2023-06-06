@@ -49,3 +49,6 @@ button:hover {
     color: red;
     padding-left: 10px;
 }
+.loader {
+  font-size: 12px;
+}
