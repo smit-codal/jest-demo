@@ -1,5 +1,5 @@
 h1 {
-    text-align: center;
+  text-align: center;
 }
 table {
   font-family: arial, sans-serif;
@@ -8,7 +8,7 @@ table {
   margin: 0 auto;
 }
 thead th {
-  background-color:#fff8dc80;
+  background-color: #fff8dc80;
   font-weight: bold;
 }
 
@@ -28,4 +28,21 @@ tbody th {
 
 tr:nth-child(even) {
   background-color: #dddddd;
+}
+
+.login-container {
+  background-color: #fff;
+  width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.create-user {
+  display: flex;
+  width: 80%;
+  justify-content: center;
+  margin: 20px auto;
 }

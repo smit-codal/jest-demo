@@ -4,6 +4,7 @@ const BASE_URL = "https://reqres.in/";
 
 const USERS_LIST = "api/users";
 const USER_LOGIN = "api/login";
+const CREATE_USER = "api/users";
 
 const fetchData = async (endPoint: string, method: string, data?: Object) => {
   return fetch(BASE_URL + endPoint, {
@@ -35,4 +36,8 @@ const loginUser = (data: { email: string; password: string }) => {
   return fetchData(`${USER_LOGIN}`, "POST", data);
 };
 
-export { getUsers, fetchUserDetail, loginUser };
+const createUser = (user: { name: string; job: string }) => {
+  return fetchData(`${CREATE_USER}`, "POST", user);
+};
+
+export { getUsers, fetchUserDetail, loginUser, createUser };

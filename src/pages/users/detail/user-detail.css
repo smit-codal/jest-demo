@@ -1,8 +1,11 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 50px;
+  background-color: #fff;
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 .user-icon {
@@ -17,23 +20,7 @@
   max-height: 100%;
   border-radius: 50%;
 }
-
-.field {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.field label {
-  width: 100px;
-  text-align: right;
-  margin-right: 10px;
-}
-
-.field input {
-  padding: 5px;
-}
-
-.submit-btn {
+.save-user {
   margin-top: 20px;
+  width: 100px;
 }

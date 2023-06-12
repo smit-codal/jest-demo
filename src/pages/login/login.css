@@ -8,25 +8,16 @@ body {
 }
 .login-container {
   background-color: #fff;
-  max-width: 400px;
+  width: 400px;
   margin: 0 auto;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  margin-top: 100px;
 }
 
 h1 {
   color: #333;
-}
-
-input {
-  width: 100%;
-  padding: 10px;
-  margin: 6px 0;
-  border-radius: 3px;
-  border: 1px solid #ccc;
 }
 
 button {
@@ -37,17 +28,7 @@ button {
   border: none;
   border-radius: 3px;
   cursor: pointer;
-}
-
-button:hover {
-  background-color: #45a049;
-}
-
-.error-block {
-    font-size: 12px;
-    display: flex;
-    color: red;
-    padding-left: 10px;
+  margin-top: 10px;
 }
 .loader {
   font-size: 12px;

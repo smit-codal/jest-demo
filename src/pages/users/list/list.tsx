@@ -11,10 +11,9 @@ export default function UsersList() {
   useEffect(() => {
     async function getUsersData() {
       const { data } = await getUsers();
-      console.log(users);
-      if (data[0].email) {
-        console.log("email exists");
-      }
+      // if (data[0].email) {
+      //   console.log("email exists");
+      // }
       setUsers(data);
     }
     getUsersData();
@@ -24,8 +23,13 @@ export default function UsersList() {
     navigate(paths.userDetails + id);
   };
 
+  const handleLogout = () => {
+    localStorage.clear()
+    navigate(paths.login)
+  }
+
   return (
-    <>
+    <div className="user-container center">
       <h1>Users List</h1>
       {users.length > 0 ? (
         <table>
@@ -46,7 +50,15 @@ export default function UsersList() {
             ))}
           </tbody>
         </table>
-      ) : null}
-    </>
+      ) : (
+        "Fetching..."
+      )}
+      <button className="create-user" onClick={() => navigate(paths.createUser)}>
+        Create User
+      </button>
+      <div className="back-btn" onClick={handleLogout}>
+        Logout
+      </div>
+    </div>
   );
 }

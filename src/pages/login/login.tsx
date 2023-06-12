@@ -49,7 +49,7 @@ export function LoginPage() {
         setIsLoading(false)
         if(res && res.token) {
           localStorage.setItem('token', res.token)
-          navigate(paths.root)
+          navigate(paths.userList)
         }
       } catch(error: any) {
         console.log(error)
@@ -79,7 +79,7 @@ export function LoginPage() {
 
   return (
     <>
-      <div className="login-container">
+      <div className="login-container center">
         <h1>Login</h1>
         {
           isLoading && <div className="loader">Submitting...</div>

@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 type InputProps = {
   value: string;
   label?: string;
@@ -6,7 +8,7 @@ type InputProps = {
   id?: string;
   required?: boolean;
   placeholder?: string;
-  handleChange: Function
+  handleChange: Function;
 };
 
 export default function InputBox({
@@ -17,20 +19,38 @@ export default function InputBox({
   id,
   required,
   placeholder,
-  handleChange
+  handleChange,
 }: InputProps) {
+  const [showPassword, setShowPassWord] = useState(false);
+
+  const handleTogglePassword = () => {
+    setShowPassWord(!showPassword);
+  };
   return (
-    <>
-      <label htmlFor={id}>{label}</label>
-      <input
-        type={type}
-        id={id}
-        name={name}
-        value={value}
-        required={required}
-        placeholder={placeholder}
-        onChange={(e) => handleChange(e.target.value, name)}
-      />
-    </>
+    <div className="form-control">
+      <label className="input-label" htmlFor={id}>
+        {label}
+      </label>
+      <div className="input-wrapper">
+        <input
+          type={showPassword ? "text" : type}
+          id={id}
+          name={name}
+          value={value}
+          required={required}
+          placeholder={placeholder}
+          onChange={(e) => handleChange(e.target.value, name)}
+        />
+        {type === "password" && (
+          <button
+            type="button"
+            className="toggle-password-button"
+            onClick={handleTogglePassword}
+          >
+            {showPassword ? "Hide" : "Show"}
+          </button>
+        )}
+      </div>
+    </div>
   );
 }

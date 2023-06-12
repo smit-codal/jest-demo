@@ -1,0 +1,22 @@
+.user-container {
+  background-color: #fff;
+  width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+h1 {
+  color: #333;
+}
+
+
+.loader {
+  font-size: 12px;
+}
+
+.submit-btn {
+  margin-top: 6px;
+}
