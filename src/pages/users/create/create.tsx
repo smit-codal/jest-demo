@@ -1,13 +1,20 @@
 import { useEffect, useState } from "react";
 import "./create.css";
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import InputBox from "../../../components/Inputs/input";
 import { createUser } from "../../../apiUtils";
 import { paths } from "../../../router";
+import { RootState } from "../../../store/store";
+import  {createUserOnStore}  from "../../../store/userSlice";
 
 export default function CreateUsers() {
   const navigate = useNavigate();
+  const dispatch = useDispatch()
   const [isLoading, setIsLoading] = useState(false);
+
+  const usersFromStore = useSelector((state: RootState) => state.user.users);
+  console.log("usersFromStore", usersFromStore)
 
   type CreateUserForm = {
     name: string;
@@ -64,6 +71,8 @@ export default function CreateUsers() {
       setIsLoading(true);
       try {
         const result = await createUser(formDetails);
+        console.log(result)
+        dispatch(createUserOnStore(result))
         setIsLoading(false);
         navigate(paths.userList);
       } catch (e) {
