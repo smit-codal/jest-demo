@@ -40,4 +40,18 @@ describe("Users: ", () => {
       fireEvent.click(row);
     }
   });
+
+  it("user gets logout", () => {
+    render(
+      <Router>
+        <UsersList />
+      </Router>
+    );
+    const headingElement = screen.getByTestId("logout-btn");
+    fireEvent.click(headingElement)
+
+    const createUserBtn = screen.getByRole("button")
+    fireEvent.click(createUserBtn)
+  })
+  
 });

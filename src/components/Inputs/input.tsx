@@ -43,6 +43,7 @@ export default function InputBox({
         />
         {type === "password" && (
           <button
+          data-testid="password-toggle"
             type="button"
             className="toggle-password-button"
             onClick={handleTogglePassword}

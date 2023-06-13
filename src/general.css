@@ -89,3 +89,7 @@ button {
   padding: 0;
   border: none;
 }
+
+.status-text {
+  font-weight: bold;
+}

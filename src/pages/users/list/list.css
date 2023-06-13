@@ -30,7 +30,7 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
-.login-container {
+.user-container {
   background-color: #fff;
   width: 1000px;
   margin: 0 auto;

@@ -82,7 +82,7 @@ export function LoginPage() {
       <div className="login-container center">
         <h1>Login</h1>
         {
-          isLoading && <div className="loader">Submitting...</div>
+          isLoading && <div className="status-text">Submitting...</div>
         }
         <form>
           <InputBox

@@ -40,4 +40,8 @@ const createUser = (user: { name: string; job: string }) => {
   return fetchData(`${CREATE_USER}`, "POST", user);
 };
 
-export { getUsers, fetchUserDetail, loginUser, createUser };
+const updateUser = (id: string | undefined, user: { name: string; job: string }) => {
+  return fetchData(`${CREATE_USER}/${id}`, "PUT", user);
+};
+
+export { getUsers, fetchUserDetail, loginUser, createUser, updateUser };

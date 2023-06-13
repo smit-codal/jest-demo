@@ -17,7 +17,7 @@ beforeEach(() => {
 //   });
 
 describe("Login: ", () => {
-  it("Renders Correctly", async () => {
+  it("Renders Correctly and toogle password works", async () => {
     const { container } = render(
       <Router>
         <LoginPage />
@@ -25,6 +25,14 @@ describe("Login: ", () => {
     );
 
     expect(container.querySelector("h1")).toBeInTheDocument();
+
+    const passwordElement = screen.getByPlaceholderText("Password");
+    expect(passwordElement).toHaveAttribute('type', 'password')
+
+    const togglePasswordBtn = screen.getByTestId("password-toggle")
+    fireEvent.click(togglePasswordBtn)
+
+    expect(passwordElement).toHaveAttribute('type', 'text')
   });
 
   it("Invalid Form logic works", () => {
@@ -40,7 +48,7 @@ describe("Login: ", () => {
     fireEvent.change(userNameElement, { target: { value: "" } });
     fireEvent.change(passwordElement, { target: { value: "" } });
 
-    const loginBtn = screen.getByRole("button");
+    const loginBtn = screen.getByRole("button", { name: "Login" });
     fireEvent.click(loginBtn);
   });
 
@@ -58,26 +66,28 @@ describe("Login: ", () => {
     fireEvent.change(userNameElement, { target: { value: "smit@codal.com" } });
     fireEvent.change(passwordElement, { target: { value: "Password@123" } });
 
-    const loginBtn = screen.getByRole("button");
+    const loginBtn = screen.getByRole("button", { name: "Login" });
     fireEvent.click(loginBtn);
   });
 
-    it("Catch block gets Rendered", () => {
-        jest.spyOn(apiUtils, "loginUser").mockRejectedValue(new Error("Something went wrong"));
+  it("Catch block gets Rendered", () => {
+    jest
+      .spyOn(apiUtils, "loginUser")
+      .mockRejectedValue(new Error("Something went wrong"));
 
-      render(
-        <Router>
-          <LoginPage />
-        </Router>
-      );
+    render(
+      <Router>
+        <LoginPage />
+      </Router>
+    );
 
-      const userNameElement = screen.getByPlaceholderText("Username");
-      const passwordElement = screen.getByPlaceholderText("Password");
+    const userNameElement = screen.getByPlaceholderText("Username");
+    const passwordElement = screen.getByPlaceholderText("Password");
 
-      fireEvent.change(userNameElement, { target: { value: "smit@codal.com" } });
-      fireEvent.change(passwordElement, { target: { value: "Password@123" } });
+    fireEvent.change(userNameElement, { target: { value: "smit@codal.com" } });
+    fireEvent.change(passwordElement, { target: { value: "Password@123" } });
 
-      const loginBtn = screen.getByRole("button");
-      fireEvent.click(loginBtn);
-    });
+    const loginBtn = screen.getByRole("button", { name: "Login" });
+    fireEvent.click(loginBtn);
+  });
 });

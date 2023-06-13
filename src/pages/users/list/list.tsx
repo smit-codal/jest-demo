@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { getUsers } from "../../../apiUtils";
 import { Users } from "../types";
 import { paths } from "../../../router";
-import "./users.css";
+import "./list.css";
 
 export default function UsersList() {
   const navigate = useNavigate();
@@ -24,9 +24,9 @@ export default function UsersList() {
   };
 
   const handleLogout = () => {
-    localStorage.clear()
-    navigate(paths.login)
-  }
+    localStorage.clear();
+    navigate(paths.login);
+  };
 
   return (
     <div className="user-container center">
@@ -51,12 +51,15 @@ export default function UsersList() {
           </tbody>
         </table>
       ) : (
-        "Fetching..."
+        <div className="status-text">Fetching...</div>
       )}
-      <button className="create-user" onClick={() => navigate(paths.createUser)}>
+      <button
+        className="create-user"
+        onClick={() => navigate(paths.createUser)}
+      >
         Create User
       </button>
-      <div className="back-btn" onClick={handleLogout}>
+      <div data-testid="logout-btn" className="back-btn" onClick={handleLogout}>
         Logout
       </div>
     </div>

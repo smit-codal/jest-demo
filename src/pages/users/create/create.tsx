@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./create-user.css";
+import "./create.css";
 import { useNavigate } from "react-router-dom";
 import InputBox from "../../../components/Inputs/input";
 import { createUser } from "../../../apiUtils";
@@ -76,7 +76,7 @@ export default function CreateUsers() {
     <>
       <div className="user-container center">
         <h1>Create User</h1>
-        {isLoading && <div className="loader">Submitting...</div>}
+        {isLoading && <div className="status-text">Submitting...</div>}
         <form>
           <InputBox
             type="text"
