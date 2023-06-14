@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
 import "./create.css";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import InputBox from "../../../components/Inputs/input";
 import { createUser } from "../../../apiUtils";
 import { paths } from "../../../router";
 import { RootState } from "../../../store/store";
-import  {createUserOnStore}  from "../../../store/userSlice";
+import { createUserOnStore } from "../../../store/userSlice";
 
 export default function CreateUsers() {
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
 
   const usersFromStore = useSelector((state: RootState) => state.user.users);
-  console.log("usersFromStore", usersFromStore)
+  console.log("usersFromStore", usersFromStore);
 
   type CreateUserForm = {
     name: string;
@@ -69,15 +69,11 @@ export default function CreateUsers() {
     const { name, job } = formDetails;
     if (name !== "" && job !== "") {
       setIsLoading(true);
-      try {
-        const response = await createUser(formDetails);
-        console.log(response)
-        dispatch(createUserOnStore(response))
-        setIsLoading(false);
-        navigate(paths.userList);
-      } catch (e) {
-        setIsLoading(false);
-      }
+      const response = await createUser(formDetails);
+      console.log(response);
+      dispatch(createUserOnStore(response));
+      setIsLoading(false);
+      navigate(paths.userList);
     }
   };
 
@@ -105,13 +101,19 @@ export default function CreateUsers() {
             handleChange={handleInputChange}
           />
           {formError.job && <div className="error-block">{formError.job}</div>}
-          
+
           <div className="submit-btn">
             <button type="button" className="" onClick={handleSubmit}>
               Create User
             </button>
           </div>
-          <div data-testid="back-btn" className="back-btn" onClick={() => navigate(paths.userList)}>Back</div>
+          <div
+            data-testid="back-btn"
+            className="back-btn"
+            onClick={() => navigate(paths.userList)}
+          >
+            Back
+          </div>
         </form>
       </div>
     </>

@@ -3,29 +3,18 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { LoginPage } from "../../../pages/login/login";
 import * as apiUtils from "../../../apiUtils";
 
-beforeEach(() => {
-  jest.resetAllMocks();
-});
-
-// jest.mock("../../../apiUtils", () => {
-//     return {
-//       loginUser: () =>
-//         Promise.resolve({
-//           token: "abc",
-//         }),
-//     };
-//   });
-
 describe("Login: ", () => {
   it("Renders Correctly and toogle password works", async () => {
-    const { container } = render(
+    render(
       <Router>
         <LoginPage />
       </Router>
     );
+    // find only h1 element present
+    const headerElement = screen.getByRole("heading")
+    expect(headerElement).toBeInTheDocument();
 
-    expect(container.querySelector("h1")).toBeInTheDocument();
-
+    // expect password input field type to be 'password' initially
     const passwordElement = screen.getByPlaceholderText("Password");
     expect(passwordElement).toHaveAttribute('type', 'password')
 
@@ -45,6 +34,8 @@ describe("Login: ", () => {
     const userNameElement = screen.getByPlaceholderText("Username");
     const passwordElement = screen.getByPlaceholderText("Password");
 
+    // let input's be empty and hit the login button to trigger the validation
+
     fireEvent.change(userNameElement, { target: { value: "" } });
     fireEvent.change(passwordElement, { target: { value: "" } });
 
@@ -53,6 +44,7 @@ describe("Login: ", () => {
   });
 
   it("Login Works properly", () => {
+    // mock the loginUser api
     jest.spyOn(apiUtils, "loginUser").mockResolvedValue({ token: "abc" });
     render(
       <Router>
@@ -63,6 +55,8 @@ describe("Login: ", () => {
     const userNameElement = screen.getByPlaceholderText("Username");
     const passwordElement = screen.getByPlaceholderText("Password");
 
+    // fill input fields with details
+
     fireEvent.change(userNameElement, { target: { value: "smit@codal.com" } });
     fireEvent.change(passwordElement, { target: { value: "Password@123" } });
 
@@ -71,6 +65,7 @@ describe("Login: ", () => {
   });
 
   it("Catch block gets Rendered", () => {
+    // mock api to generate Error to parse the catch block
     jest
       .spyOn(apiUtils, "loginUser")
       .mockRejectedValue(new Error("Something went wrong"));

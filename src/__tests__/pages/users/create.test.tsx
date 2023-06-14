@@ -24,6 +24,9 @@ describe("User Details:", () => {
       </Provider>
     );
 
+
+    // find h1 element with text Create User
+
     const createUserText = screen.getByRole("heading", {
       name: /create user/i,
     });
@@ -65,8 +68,6 @@ describe("User Details:", () => {
     const saveBtn = screen.getByRole("button", { name: "Create User" });
     fireEvent.click(saveBtn);
   });
-
-  //   it("Catch Block Gets Rendered", () => {
   //     jest.resetAllMocks();
 
   //     jest.spyOn(JestRouter, "useParams").mockReturnValue({ id: "3" });

@@ -83,17 +83,13 @@ export default function UserDetails() {
     const { first_name, last_name, email } = userDetail;
     if (first_name !== "" && last_name !== "" && email !== "") {
       setIsLoading(true);
-      try {
-        const params = {
-          name: first_name,
-          job: "zion resident",
-        };
-        await updateUser(id, params);
-        setIsLoading(false);
-        navigate(paths.userList);
-      } catch (e) {
-        setIsLoading(false);
-      }
+      const params = {
+        name: first_name,
+        job: "zion resident",
+      };
+      await updateUser(id, params);
+      setIsLoading(false);
+      navigate(paths.userList);
     }
   };
 
@@ -101,7 +97,7 @@ export default function UserDetails() {
     <div className="center container ">
       <h1>User Details</h1>
       <div className="user-icon">
-        <Image src={userDetail.avatar} alt="User Icon"/>
+        <Image src={userDetail.avatar} alt="User Icon" />
       </div>
       <InputBox
         label="Email :"

@@ -4,6 +4,8 @@ import { BrowserRouter as Router } from "react-router-dom";
 import * as JestRouter from "react-router";
 import * as APIUtils from "../../../apiUtils";
 
+
+// mocking the react-router package
 jest.mock("react-router", () => ({
   ...jest.requireActual("react-router"),
   useParams: jest.fn(),

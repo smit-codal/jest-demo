@@ -26,8 +26,11 @@ describe("Users: ", () => {
       </Router>
     );
 
+    // find heading Element
     const headingElement = screen.getByRole("heading");
     expect(headingElement).toBeInTheDocument();
+
+    // find table element
 
     const unorderListElement = await screen.findByRole("table");
     expect(unorderListElement).toBeInTheDocument();
