@@ -70,9 +70,9 @@ export default function CreateUsers() {
     if (name !== "" && job !== "") {
       setIsLoading(true);
       try {
-        const result = await createUser(formDetails);
-        console.log(result)
-        dispatch(createUserOnStore(result))
+        const response = await createUser(formDetails);
+        console.log(response)
+        dispatch(createUserOnStore(response))
         setIsLoading(false);
         navigate(paths.userList);
       } catch (e) {
@@ -111,7 +111,7 @@ export default function CreateUsers() {
               Create User
             </button>
           </div>
-          <div className="back-btn" onClick={() => navigate(paths.userList)}>Back</div>
+          <div data-testid="back-btn" className="back-btn" onClick={() => navigate(paths.userList)}>Back</div>
         </form>
       </div>
     </>
