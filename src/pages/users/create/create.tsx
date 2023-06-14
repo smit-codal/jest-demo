@@ -14,7 +14,6 @@ export default function CreateUsers() {
   const [isLoading, setIsLoading] = useState(false);
 
   const usersFromStore = useSelector((state: RootState) => state.user.users);
-  console.log("usersFromStore", usersFromStore);
 
   type CreateUserForm = {
     name: string;
@@ -70,7 +69,6 @@ export default function CreateUsers() {
     if (name !== "" && job !== "") {
       setIsLoading(true);
       const response = await createUser(formDetails);
-      console.log(response);
       dispatch(createUserOnStore(response));
       setIsLoading(false);
       navigate(paths.userList);

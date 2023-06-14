@@ -52,7 +52,6 @@ export function LoginPage() {
           navigate(paths.userList)
         }
       } catch(error: any) {
-        console.log(error)
         setIsLoading(false)
         alert(error.message)
       }

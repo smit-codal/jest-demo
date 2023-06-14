@@ -35,7 +35,6 @@ export default function UserDetails() {
   useEffect(() => {
     async function fetchUser(id: string) {
       const { data } = await fetchUserDetail(id);
-      // console.log(data);
       setUserDetail(data);
     }
     if (id) fetchUser(id);

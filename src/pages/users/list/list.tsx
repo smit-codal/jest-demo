@@ -11,9 +11,6 @@ export default function UsersList() {
   useEffect(() => {
     async function getUsersData() {
       const { data } = await getUsers();
-      // if (data[0].email) {
-      //   console.log("email exists");
-      // }
       setUsers(data);
     }
     getUsersData();
